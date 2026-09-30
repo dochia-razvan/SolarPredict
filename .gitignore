@@ -1,0 +1,48 @@
+#  SolarPredict - root .gitignore
+
+# ---- Secrets / local config (NEVER commit) ----
+# local.properties contains GOOGLE_MAPS_API_KEY + local SDK path
+local.properties
+# google-services.json holds the Firebase project config
+google-services.json
+*serviceAccount*.json
+*-adminsdk-*.json
+.env
+.env.*
+
+# ---- Android build artifacts ----
+*.iml
+.idea/
+.gradle/
+.kotlin/
+build/
+captures/
+.externalNativeBuild/
+.cxx/
+*.apk
+*.aab
+*.keystore
+*.jks
+
+# ---- Python / Firebase Functions ----
+__pycache__/
+*.py[cod]
+venv/
+.venv/
+*.local
+
+# ---- Firebase emulator / debug ----
+.firebase/
+*.log
+firebase-debug.*.log*
+firestore-debug.log
+ui-debug.log
+.runtimeconfig.json
+
+# ---- Node (if ever added) ----
+node_modules/
+
+# ---- OS junk ----
+.DS_Store
+Thumbs.db
+desktop.ini

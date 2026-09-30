@@ -1,0 +1,8 @@
+firebase-functions
+firebase-admin
+xgboost>=2.0.0
+scikit-learn
+numpy
+pandas
+requests
+joblib

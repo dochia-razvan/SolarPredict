@@ -1,0 +1,105 @@
+[versions]
+# --- Build tooling ---
+agp = "9.1.1"
+kotlin = "2.2.10"
+googleServicesPlugin = "4.4.2"
+
+# --- AndroidX core ---
+coreKtx = "1.13.1"
+lifecycleRuntimeKtx = "2.8.7"
+activityCompose = "1.9.3"
+
+# --- Compose ---
+composeBom = "2026.02.01"
+navigationCompose = "2.8.5"
+lifecycleViewmodelCompose = "2.8.7"
+# Material icons (extended) — pinned because BOM does not always include the extended icon set
+composeMaterialIconsExtended = "1.7.6"
+
+# --- Firebase (BOM controls all firebase-* artifact versions) ---
+firebaseBom = "33.13.0"
+
+# --- Google Maps (Compose) ---
+mapsCompose = "6.4.1"
+playServicesMaps = "19.0.0"
+playServicesLocation = "21.3.0"
+
+# --- Google Places (autocomplete + place details) ---
+places = "3.5.0"
+
+# --- Charts (Vico — Compose Material3 flavor) ---
+vico = "2.0.2"
+
+# --- DataStore (preferences) — used to persist saved locations locally ---
+datastore = "1.1.1"
+
+# --- Kotlin Coroutines (+ Tasks bridge for Firebase .await()) ---
+coroutines = "1.9.0"
+
+# --- Testing ---
+junit = "4.13.2"
+junitVersion = "1.1.5"
+espressoCore = "3.5.1"
+
+
+[libraries]
+# --- AndroidX core ---
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
+androidx-lifecycle-runtime-compose = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "lifecycleRuntimeKtx" }
+androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
+
+# --- Compose BOM + UI ---
+androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
+androidx-compose-ui = { group = "androidx.compose.ui", name = "ui" }
+androidx-compose-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
+androidx-compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
+androidx-compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+androidx-compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
+androidx-compose-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
+androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3" }
+# Extended icon set (Search, Settings, History, Place, ArrowBack, etc.)
+androidx-compose-material-icons-extended = { group = "androidx.compose.material", name = "material-icons-extended", version.ref = "composeMaterialIconsExtended" }
+# Downloadable Google Fonts (Space Grotesk + Manrope)
+androidx-compose-ui-text-google-fonts = { group = "androidx.compose.ui", name = "ui-text-google-fonts" }
+
+# --- Navigation + ViewModel for Compose ---
+androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
+androidx-lifecycle-viewmodel-compose = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "lifecycleViewmodelCompose" }
+
+# --- Firebase (BOM-controlled, no individual versions) ---
+firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebaseBom" }
+firebase-auth-ktx = { group = "com.google.firebase", name = "firebase-auth-ktx" }
+firebase-functions-ktx = { group = "com.google.firebase", name = "firebase-functions-ktx" }
+firebase-firestore-ktx = { group = "com.google.firebase", name = "firebase-firestore-ktx" }
+
+# --- Google Maps (Compose wrapper) ---
+maps-compose = { group = "com.google.maps.android", name = "maps-compose", version.ref = "mapsCompose" }
+play-services-maps = { group = "com.google.android.gms", name = "play-services-maps", version.ref = "playServicesMaps" }
+play-services-location = { group = "com.google.android.gms", name = "play-services-location", version.ref = "playServicesLocation" }
+
+# --- Google Places (autocomplete predictions + place details) ---
+places = { group = "com.google.android.libraries.places", name = "places", version.ref = "places" }
+
+# --- Vico chart (Compose + Material3 styling) ---
+vico-compose = { group = "com.patrykandpatrick.vico", name = "compose", version.ref = "vico" }
+vico-compose-m3 = { group = "com.patrykandpatrick.vico", name = "compose-m3", version.ref = "vico" }
+
+# --- DataStore (preferences) ---
+androidx-datastore-preferences = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "datastore" }
+
+# --- Coroutines (core + Play Services bridge for Task.await()) ---
+kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutines" }
+kotlinx-coroutines-play-services = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-play-services", version.ref = "coroutines" }
+
+# --- Testing ---
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
+androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+# Required for google-services.json processing (Firebase)
+google-services = { id = "com.google.gms.google-services", version.ref = "googleServicesPlugin" }

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Certificate hashes for the Google Play Services font provider.
+
+    Auto-populate by adding any downloadable font in Android Studio:
+        File > New > XML > Font (or right-click res > New > Font)
+        choose "Add font..." > pick e.g. "Manrope"
+    Android Studio writes the production cert into the prod array below
+    automatically.
+
+    Until the certs are populated, Compose will fall back to FontFamily.Default
+    instead of crashing — the app still renders, just with the system font.
+-->
+<resources>
+    <array name="com_google_android_gms_fonts_certs">
+        <item>@array/com_google_android_gms_fonts_certs_dev</item>
+        <item>@array/com_google_android_gms_fonts_certs_prod</item>
+    </array>
+
+    <string-array name="com_google_android_gms_fonts_certs_dev">
+        <!-- Android Studio fills this in automatically -->
+    </string-array>
+
+    <string-array name="com_google_android_gms_fonts_certs_prod">
+        <!-- Android Studio fills this in automatically -->
+    </string-array>
+</resources>

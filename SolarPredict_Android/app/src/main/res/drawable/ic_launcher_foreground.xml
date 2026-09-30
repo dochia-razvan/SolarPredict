@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Adaptive icon foreground: orange sun on a transparent backdrop.
+
+  Adaptive icons render the foreground inside a 108dp × 108dp viewport but the
+  visible "safe" area is the central 72 × 72. We size the sun to fit that safe
+  zone so launcher mask shapes (circle, rounded square, squircle) never clip it.
+
+  Coordinates: 108×108 viewport, center at (54, 54). The sun disk has radius 18,
+  and 12 rays radiate to radius 32 (within the 36-radius safe-zone circle).
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Central disk -->
+    <path
+        android:fillColor="#FF8C00"
+        android:pathData="M 54,36
+                          A 18,18 0 1 1 53.999,36 Z" />
+
+    <!-- 12 rays around the sun, radial lines length 14, stroke ~5 wide -->
+    <!-- top -->
+    <path android:strokeColor="#FF8C00" android:strokeWidth="6"
+        android:strokeLineCap="round"
+        android:pathData="M 54,18 L 54,8" />
+    <!-- top-right (30°) -->
+    <path android:strokeColor="#FF8C00" android:strokeWidth="6"
+        android:strokeLineCap="round"
+        android:pathData="M 67,21.1 L 72,12.4" />
+    <!-- right-top (60°) -->
+    <path android:strokeColor="#FF8C00" android:strokeWidth="6"
+        android:strokeLineCap="round"
+        android:pathData="M 76.4,30.6 L 85.1,25.6" />
+    <!-- right -->
+    <path android:strokeColor="#FF8C00" android:strokeWidth="6"
+        android:strokeLineCap="round"
+        android:pathData="M 80,54 L 90,54" />
+    <!-- right-bottom -->
+    <path android:strokeColor="#FF8C00" android:strokeWidth="6"
+        android:strokeLineCap="round"
+        android:pathData="M 76.4,77.4 L 85.1,82.4" />
+    <!-- bottom-right -->
+    <path android:strokeColor="#FF8C00" android:strokeWidth="6"
+        android:strokeLineCap="round"
+        android:pathData="M 67,86.9 L 72,95.6" />
+    <!-- bottom -->
+    <path android:strokeColor="#FF8C00" android:strokeWidth="6"
+        android:strokeLineCap="round"
+        android:pathData="M 54,90 L 54,100" />
+    <!-- bottom-left -->
+    <path android:strokeColor="#FF8C00" android:strokeWidth="6"
+        android:strokeLineCap="round"
+        android:pathData="M 41,86.9 L 36,95.6" />
+    <!-- left-bottom -->
+    <path android:strokeColor="#FF8C00" android:strokeWidth="6"
+        android:strokeLineCap="round"
+        android:pathData="M 31.6,77.4 L 22.9,82.4" />
+    <!-- left -->
+    <path android:strokeColor="#FF8C00" android:strokeWidth="6"
+        android:strokeLineCap="round"
+        android:pathData="M 28,54 L 18,54" />
+    <!-- left-top -->
+    <path android:strokeColor="#FF8C00" android:strokeWidth="6"
+        android:strokeLineCap="round"
+        android:pathData="M 31.6,30.6 L 22.9,25.6" />
+    <!-- top-left -->
+    <path android:strokeColor="#FF8C00" android:strokeWidth="6"
+        android:strokeLineCap="round"
+        android:pathData="M 41,21.1 L 36,12.4" />
+</vector>

@@ -1,0 +1,41 @@
+{
+  "features": [
+    "GHI",
+    "temp",
+    "pressure",
+    "humidity",
+    "clouds_all",
+    "rain_1h",
+    "snow_1h",
+    "wind_speed",
+    "dayLength",
+    "hour"
+  ],
+  "target": "PR (Performance Ratio, adimensional)",
+  "n_features": 10,
+  "quantile_models": [
+    "xgb_quantile_p10.pkl",
+    "xgb_quantile_p50.pkl",
+    "xgb_quantile_p90.pkl"
+  ],
+  "quantile_alpha": [
+    0.1,
+    0.5,
+    0.9
+  ],
+  "note": "Modelele quantile prezic PR. Conversia in Wh se face in backend.",
+  "inference_formula": "energy_wh = PR_pred * GHI * area_user * eff_user * 0.25",
+  "ghi_threshold": "GHI <= 20 W/m2 -> returneaza 0 Wh fara a rula modelul",
+  "feature_descriptions": {
+    "GHI": "Global Horizontal Irradiance [W/m2]",
+    "temp": "Temperatura ambientala [C]",
+    "pressure": "Presiune atmosferica [hPa]",
+    "humidity": "Umiditate relativa [%]",
+    "clouds_all": "Acoperire nori [%]",
+    "rain_1h": "Precipitatii ultima ora [mm]",
+    "snow_1h": "Ninsori ultima ora [mm]",
+    "wind_speed": "Viteza vantului [m/s]",
+    "dayLength": "Durata zilei [minute]",
+    "hour": "Ora din zi [0-23]"
+  }
+}

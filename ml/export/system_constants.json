@@ -1,0 +1,35 @@
+{
+  "base_area_m2": 410.0,
+  "base_efficiency": 0.18,
+  "temp_reference_c": 25.0,
+  "temp_coef": -0.004,
+  "interval_hours": 0.25,
+  "inference_formula": "energy_wh = PR_pred * GHI * area_user * eff_user * 0.25",
+  "winning_model_comparatie": "XGBoost",
+  "winner_metrics": {
+    "MAE": 128.94264221191406,
+    "RMSE": 284.04652732871074,
+    "R2": 0.9266803860664368,
+    "MAPE": 61.85147705335602
+  },
+  "overfit_gaps_pct": {
+    "LinReg": 9.032390930455698,
+    "RandomForest": 15.344399868517266,
+    "XGBoost": 18.15165815151274,
+    "ARMAX": 102.45297037422525,
+    "Hibrid": 104.50963235170032
+  },
+  "quantile_model": "XGBoost Quantile Regression pe PR (P10/P50/P90, alpha 0.10/0.5/0.90)",
+  "quantile_hit_rate_pct": 76.90486257928119,
+  "quantile_interval_coverage_pct": 76.90486257928119,
+  "quantile_calibration_empirical": {
+    "P10": 0.14503171247357294,
+    "P50": 0.5882452431289641,
+    "P90": 0.9140803382663848
+  },
+  "quantile_avg_width_wh": 743.576286192458,
+  "quantile_mae_p50_wh": 244.2295818120548,
+  "quantile_r2_p50": 0.8901385113312575,
+  "quantile_p50_overfit_gap_pct": 18.921310364878106,
+  "pvwatts_avg_diff_pct": 6.997765459746672
+}

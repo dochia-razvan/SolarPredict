@@ -11,10 +11,7 @@ where 0.25 h is the 15-minute interval (TIMP_INTERVAL from the training
 dataset). The product GHI * area * eff has units of watts; multiplying by
 hours yields watt-hours.
 
-Quantile naming: the underlying models were fit at quantiles 0.05 / 0.50 / 0.95.
-We continue to expose them as p10 / p50 / p90 in the public API so the Android
-client doesn't need to rename anything — the labels are conventional, only the
-math under the hood changed.
+Quantile naming: the models are fit at quantiles 0.10 / 0.50 / 0.90 and exposed as p10 / p50 / p90.
 
 Night / dawn / dusk short-circuit:
     The PR models were trained ONLY on samples with GHI > 20 W/m². Below that

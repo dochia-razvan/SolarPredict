@@ -1,0 +1,6 @@
+Model,Tip,MAE_train,MAE_test,Gap_%
+RandomForest,direct,110.2,127.11,15.3
+XGBoost,direct,109.13,128.94,18.2
+LinReg,direct,233.24,254.31,9.0
+ARMAX,autoregresiv,120.62,244.19,102.5
+Hibrid,autoregresiv,124.34,254.29,104.5

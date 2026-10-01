@@ -1,5 +1,7 @@
 An Android app that estimates how much energy a solar panel will produce at a chosen location, using live weather data. Instead of a single number, the app gives a low, an expected and a high estimate for every 15 minutes over the next 14 days. It is my diploma project.
 
+A short video of the final version of the app: https://docs.google.com/file/d/1dFUF1NBbRNr3dUdUgMyUi5-Rt8rsnY03/preview
+
 The user picks a location on a map or searches for an address, enters the area and the efficiency of the panel, and gets the forecast as a chart with daily totals. Predictions can be saved in a history, marked as favorites and opened again later. The app has an English and a Romanian interface and can also be used as a guest, without an account.
 
 The app is written in Kotlin with Jetpack Compose, using the MVVM pattern. It does not run any model on the phone. It calls a backend made of Python Firebase Cloud Functions, which gets the weather from Open-Meteo, runs the models and sends the result back. The saved predictions, panels and locations are stored in Cloud Firestore, and every user can only access their own data.
@@ -10,7 +12,7 @@ I checked the results against NREL PVWatts, where the average difference was abo
 
 The model was never tested on a real installation, because the dataset has no information about the panel and its sunniest readings are weaker than real sunshine. The orientation of the panel is not used either.
 
-This repository contains an earlier version of the project, from May 2026. The final version also has a one-year estimate, saved multi-panel systems, Google sign-in, savings calculations and an offline screen. The notebook in the ml folder is also from an earlier training run, so its numbers are a little different from the final models in the backend. The script inspect_models.py prints the settings stored in a model file.
+This repository contains an earlier version of the project, from May 2026. The final version, which is the one in the video, also has a one-year estimate, saved multi-panel systems, Google sign-in, savings calculations and an offline screen. The notebook in the ml folder is also from an earlier training run, so its numbers are a little different from the final models in the backend. The script inspect_models.py prints the settings stored in a model file.
 
 To run the app you need your own Google Maps API key (added to local.properties as GOOGLE_MAPS_API_KEY) and your own google-services.json from a Firebase project. The backend can be tested locally with the Firebase emulators.
 

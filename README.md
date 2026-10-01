@@ -76,6 +76,3 @@ Kotlin, Jetpack Compose, Material 3, Navigation Compose, Google Maps Compose and
 
 An earlier training notebook is in [`ml/`](ml/); see "Provenance" above for how it relates to the final models.
 
-## Thesis
-
-The full thesis (in Romanian): [`docs/thesis_ro.pdf`](docs/thesis_ro.pdf).

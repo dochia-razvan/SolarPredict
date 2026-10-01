@@ -27,7 +27,6 @@ You can check what any model file contains without running it:
 - `results/` holds the matching tables as CSV: data cleaning, model metrics, overfitting, Diebold-Mariano p-values, quantile calibration, and the PVWatts comparison. They correspond to the tables in Chapter 4 of the thesis.
 - The notebook in this folder is an earlier run and only regenerates part of them (16 charts, 2 tables).
 
-<!-- TODO: confirm figures/ and results/ come from the final run before publishing. -->
 
 ## Known quirks in the stored outputs
 

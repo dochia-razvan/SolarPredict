@@ -2,21 +2,19 @@
 
 An Android app that forecasts how much energy a solar panel installation will produce, and shows an uncertainty band instead of a single number. Bachelor's diploma project, University POLITEHNICA of Bucharest, Faculty of Automatic Control and Computers (2026).
 
-<!-- TODO: add 2-3 real app screenshots (docs/screenshots/) and link them here. The thesis has good ones (map, panel config, result with P10-P90 band, history). -->
-
 ## What it does
 
-- Pick a location on a map (or search an address) and describe a single panel or a multi-panel system (area, efficiency, quantity).
-- **14-day forecast** at 15-minute resolution: expected value (P50) with a P10-P90 band, daily totals, chart resolution from 15 minutes to 1 day.
-- **Typical-year estimate** built from about 5 years of historical weather: monthly and annual totals.
-- History, favourites, and saved panels, systems and locations. Estimated savings and avoided CO2 from your own price/kWh and CO2 factor.
-- Email, Google or guest sign-in (guest data stays on the phone). English/Romanian UI, switchable at runtime. Blocks the UI while offline.
+- Pick a location on a Google map (tap to place a pin) or search an address (Places autocomplete). Save locations for reuse.
+- Describe a panel by its area and efficiency. Save panels for reuse.
+- **14-day forecast** at 15-minute resolution: expected value (P50) with a P10-P90 band and daily totals. Choose the time range (next 24 h, 7 days, 14 days or custom) and switch the chart between hourly and daily views.
+- History of saved predictions, favourites, and a read-only detail view.
+- Email/password sign-in, or **guest mode** (anonymous Firebase account; guest data stays on the phone). English/Romanian UI, switchable in settings.
 
 ## Architecture
 
 Three tiers: **Android client** (Kotlin, Jetpack Compose, MVVM) -> **Firebase Cloud Functions** (Python 3.11, `europe-west1`) -> **Cloud Firestore** + **Open-Meteo**.
 
-The client contains no model and never reads Firestore directly. Every call goes through a Cloud Function that checks authentication and only touches `/users/{uid}`; Firestore security rules (owner-only) are a second, independent barrier. The backend exposes 25 callable functions, validates all inputs, and runs the three models in one batched call per quantile so a 14-day forecast (1345 intervals) fits in the function timeout.
+The client contains no model and never reads Firestore directly. Every call goes through a Cloud Function that checks authentication and only touches `/users/{uid}`; Firestore security rules (owner-only) are a second, independent barrier. The backend exposes 17 callable functions, validates all inputs, and runs the three models in one batched call per quantile so a 14-day forecast (about 1,340 intervals) fits in the function timeout.
 
 ## The model
 
@@ -50,7 +48,7 @@ Production quantile model (predicts PR, scaled to energy): P50 MAE 244.2 Wh, R2 
 
 - The model files in `SolarPredict_Backend/functions/models/` are the final thesis models: quantile levels 0.10 / 0.50 / 0.90, 600 trees, max depth 4. You can verify this without running them: `python inspect_models.py SolarPredict_Backend/functions/models/xgb_quantile_p*.pkl`.
 - The notebook in [`ml/`](ml/) trains an **earlier** configuration (0.05 / 0.50 / 0.95, max depth 6). The notebook that produced the final models was lost in a hard-drive failure, so the numbers above come from the thesis, not from the stored notebook outputs.
-- This repository is a snapshot of the backend and Android client from May 2026. The submitted thesis version adds a one-year estimate, saved multi-panel systems, guest mode and price/CO2 preferences.
+- This repository is a snapshot of the backend and Android client from May 2026. The final submitted version also has a one-year estimate from historical weather, saved multi-panel systems, Google sign-in, price/CO2 savings preferences, an offline screen and Vico-based charts. Those parts are not in this repository.
 
 ## Limitations
 
@@ -61,15 +59,13 @@ Production quantile model (predicts PR, scaled to energy): P50 MAE 244.2 Wh, R2 
 
 ## Tech stack
 
-Kotlin, Jetpack Compose, Material 3, Navigation Compose, Google Maps Compose and Places SDK, Vico charts, DataStore | Python 3.11, Firebase Cloud Functions, Firestore, Firebase Authentication | XGBoost, scikit-learn, statsmodels, pandas, NumPy, SciPy | Open-Meteo API. Firebase **Blaze** plan (required for outbound calls to the weather API).
+Kotlin, Jetpack Compose, Material 3, Navigation Compose, Google Maps Compose and Places SDK, DataStore, custom Compose Canvas charts | Python 3.11, Firebase Cloud Functions, Firestore, Firebase Authentication | XGBoost, scikit-learn, statsmodels, pandas, NumPy, SciPy | Open-Meteo API. Firebase **Blaze** plan (required for outbound calls to the weather API).
 
 ## Running it
 
-<!-- TODO: double-check these commands against your final setup before publishing. -->
-
 1. **Android:** add `GOOGLE_MAPS_API_KEY=<your key>` to `SolarPredict_Android/local.properties` (never committed) and put your own `google-services.json` in `SolarPredict_Android/app/`. Minimum API 26.
-2. **Backend:** `cd SolarPredict_Backend/functions && pip install -r requirements.txt`, then `firebase emulators:start` to run Auth, Functions and Firestore locally.
-3. **Tests:** with the emulators running, `python test_backend.py` calls every callable function with valid and invalid inputs.
+2. **Backend:** `cd SolarPredict_Backend/functions && pip install -r requirements.txt`, then from `SolarPredict_Backend` run `firebase emulators:start` to start Auth, Functions and Firestore locally.
+3. **Tests:** with the emulators running, `python functions/test_backend.py` (from `SolarPredict_Backend`) calls every callable function with valid and invalid inputs. The PVWatts check needs a free NREL API key: replace `YOUR_NREL_API_KEY` in `test_backend.py` (get one at developer.nrel.gov).
 4. **Deploy:** `firebase deploy --only functions` (region `europe-west1`, must match the client).
 
 ## Training code

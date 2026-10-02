@@ -14,8 +14,6 @@ The model was never tested on a real installation, because the dataset has no in
 
 This repository contains an earlier version of the project, from May 2026. The final version, which is the one in the video, also has a one-year estimate, saved multi-panel systems, Google sign-in, savings calculations and an offline screen. The notebook in the ml folder is also from an earlier training run, so its numbers are a little different from the final models in the backend. The script inspect_models.py prints the settings stored in a model file.
 
-To run the app you need your own Google Maps API key (added to local.properties as GOOGLE_MAPS_API_KEY) and your own google-services.json from a Firebase project. The backend can be tested locally with the Firebase emulators.
-
 Android: Kotlin, Jetpack Compose, Google Maps and Places
 
 Backend: Python, Firebase Cloud Functions, Cloud Firestore, Firebase Authentication, Open-Meteo API

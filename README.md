@@ -1,4 +1,4 @@
-An Android app that estimates how much energy a solar panel will produce at a chosen location, using live weather data. Instead of a single number, the app gives a low, an expected and a high estimate for every 15 minutes over the next 14 days. It is my diploma project.
+An Android app that estimates how much energy a solar panel will produce at a chosen location, using live weather data. Instead of a single number, the app gives a low, an expected and a high estimate for every 15 minutes over the next 14 days. It is my final-year project.
 
 A short video of the final version of the app: [watch the demo](https://drive.google.com/file/d/1dFUF1NBbRNr3dUdUgMyUi5-Rt8rsnY03/view?usp=sharing)
 
